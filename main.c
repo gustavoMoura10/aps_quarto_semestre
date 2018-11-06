@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #define tam 10000
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int i, j, vetor[tam], vetor2[tam], vetor3[tam];
 
 void preencher(){
