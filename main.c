@@ -232,6 +232,7 @@ LINE96532:
 			printf("Essa opcao ja foi executada! \n");
 			break;
 		default:
+			system("cls");
 			printf("Opcao Invalida! \n");
 			break;	
 		}
