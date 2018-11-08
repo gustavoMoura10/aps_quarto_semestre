@@ -18,24 +18,24 @@ Vetores preencher(Vetores v)
 	for (i = 0; i < tam; i++)
 	{
 		v.vetor1[i] = rand() % tam;
-		v.vetor2[i] = rand() % tam;
-		v.vetor3[i] = rand() % tam;
-		v.vetor4[i] = rand() % tam;
+		v.vetor2[i] = rand() % (tam * 2);
+		v.vetor3[i] = rand() % (tam * 3);
+		v.vetor4[i] = rand() % (tam * 4);
 	}
 	return v;
 }
 void mostrarTela(int *vetor, int numeroVetor)
 {
-	printf("VETOR %d \n", numeroVetor);
 	printf("\n");
 	for (i = 0; i < tam; i++)
 	{
 		printf("%d \t", vetor[i]);
 	}
 	printf("\n");
+	printf("VETOR %d \n", numeroVetor);
 }
 
-void busca_bin(int *vetor)
+void buscaBinaria(int *vetor)
 {
 	int achou = 0, inicio = 0, fim = tam - 1, meio, busca;
 	printf("\nEntre com o inteiro a ser pesquisado: ");
@@ -138,7 +138,7 @@ void quicksort(int *vetor, int began, int end)
 		quicksort(vetor, i, end);
 }
 
-void opcao(Vetores v)
+void opcaoSort(Vetores v)
 {
 	int tempo, opcao;
 	while (opcao != 0)
@@ -152,45 +152,61 @@ void opcao(Vetores v)
 		printf("4) QUICKSORT \n");
 		scanf("%d", &opcao);
 		char str[20] = "";
-		inicio = clock();
+
 		switch (opcao)
 		{
 		case 1:
+			inicio = clock();
 			bubbleSort(v.vetor1);
 			mostrarTela(v.vetor1, 1);
 			strcpy(str, "Bubble Sort");
+			fim = clock();
+			tempo = fim - inicio;
+			buscaBinaria(v.vetor1);
 			v = preencher(v);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
 			break;
 		case 2:
+			inicio = clock();
 			selectionSort(v.vetor2);
 			mostrarTela(v.vetor2, 2);
 			strcpy(str, "Select Sort");
+			fim = clock();
+			tempo = fim - inicio;
+			buscaBinaria(v.vetor2);
 			v = preencher(v);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
 			break;
 		case 3:
+			inicio = clock();
 			insertSort(v.vetor3);
 			mostrarTela(v.vetor3, 3);
 			strcpy(str, "Insert Sort");
+			fim = clock();
+			tempo = fim - inicio;
+			buscaBinaria(v.vetor3);
 			v = preencher(v);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
 			break;
 		case 4:
+			inicio = clock();
 			quicksort(v.vetor4, 0, tam);
 			mostrarTela(v.vetor4, 4);
-			strcpy(str, "Insert Sort");
+			strcpy(str, "Quick Sort");
+			fim = clock();
+			tempo = fim - inicio;
+			buscaBinaria(v.vetor4);
 			v = preencher(v);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
 			break;
 		}
-		fim = clock();
-		tempo = fim - inicio;
-		printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
 	}
 }
-
 int main()
 {
 	Vetores v;
 	v = preencher(v);
-	opcao(v);
+	opcaoSort(v);
 	system("pause");
 	return 0;
 }
