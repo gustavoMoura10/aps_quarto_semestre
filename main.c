@@ -241,6 +241,8 @@ void interface(bool a, bool b, bool c, bool d)
 		        printf("\n ---------------------------------------\n");
 		        printf("| Qual opcao de sort voce deseja fazer? |");
 	            printf("\n ---------------------------------------\n");
+	    if(!a || !b || !c || !d)
+	    {
 		if (!a) printf("| 1) Bubble Sort                        |\n");
         else    printf("| 1) Bubble Sort%s         |\n", string);
         		
@@ -252,7 +254,7 @@ void interface(bool a, bool b, bool c, bool d)
 			
 		if (!d) printf("| 4) Quick Sort                         |\n");
 		else    printf("| 4) Quick Sort%s          |\n", string);
-		
+		}
 	            printf("| 5) Obter dados das opcoes escolhidas  |\n");
 	            printf("| 0) Sair                               |\n");
 	    		printf(" ---------------------------------------\n");
