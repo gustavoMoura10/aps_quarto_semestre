@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #define tam 20000
 int i, j;
+bool a, b, c, d;
 typedef struct
 {
 	int vetor1[tam];
@@ -145,100 +146,7 @@ void quicksort(int *vetor, int began, int end)
 	if (i < end)
 		quicksort(vetor, i, end);
 }
-
-void opcaoSort(Vetores v)
-{
-	int tempo, opcao=-1;
-	bool opcao1, opcao2, opcao3, opcao4;
-	while (opcao != 0)
-	{
-		clock_t inicio, fim;
-		interface(opcao1, opcao2, opcao3, opcao4);
-		scanf("%d", &opcao);
-		char str[20] = "";
-
-		switch (opcao)
-		{
-		case 1:
-			if(opcao1) {opcao = 500; goto LINE96532;}
-			inicio = clock();
-			bubbleSort(v.vetor1);
-			fim = clock();
-			mostrarTela(v.vetor1, 1);
-			strcpy(str, "Bubble Sort");
-			v.bubble = fim - inicio;
-			buscaBinaria(v.vetor1);
-			v = preencher(v);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.bubble);
-			opcao1=true;
-			break;
-		case 2:
-			if(opcao2) {opcao = 500; goto LINE96532;}
-			inicio = clock();
-			selectionSort(v.vetor2);
-			fim = clock();
-			mostrarTela(v.vetor2, 2);
-			strcpy(str, "Select Sort");
-			v.select = fim - inicio;
-			buscaBinaria(v.vetor2);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.select);
-			opcao2=true;
-			break;
-		case 3:
-			if(opcao3) {opcao = 500; goto LINE96532;}
-			inicio = clock();
-			insertSort(v.vetor3);
-			fim = clock();
-			mostrarTela(v.vetor3, 3);
-			strcpy(str, "Insert Sort");;
-			v.insert = fim - inicio;
-			buscaBinaria(v.vetor3);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.insert);
-			opcao3=true;
-			break;
-		case 4:
-			if(opcao4) {opcao = 500; goto LINE96532;}
-			inicio = clock();
-			quicksort(v.vetor4, 0, tam);
-			fim = clock();
-			mostrarTela(v.vetor4, 4);
-			strcpy(str, "Quick Sort");
-			v.quick = fim - inicio;
-			buscaBinaria(v.vetor4);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.quick);
-			opcao4=true;
-			break;
-		case 5:
-			system("cls");
-			if(!opcao1&&!opcao2&&!opcao3&&!opcao4)
-			{
-
-			printf("\nNenhuma opcao ainda foi executada!\n");
-			}
-			if(opcao1)
-			printf("Tempo de ordenacao por Bubble Sort: %d milisegundos\n\n", v.bubble);
-			if(opcao2)
-			printf("Tempo de ordenacao por Select Sort: %d milisegundos\n\n", v.select);
-			if(opcao3)
-			printf("Tempo de ordenacao por Insert Sort: %d milisegundos\n\n", v.insert);
-			if(opcao4)
-			printf("Tempo de ordenacao por Quick Sort:  %d milisegundos\n\n", v.quick);
-			break;
-		case 0:
-			break;
-LINE96532:
-		case 500:
-			system("cls");
-			printf("Essa opcao ja foi executada! \n");
-			break;
-		default:
-			system("cls");
-			printf("Opcao Invalida! \n");
-			break;	
-		}
-	}
-}
-void interface(bool a, bool b, bool c, bool d)
+void interface()
 {
 	char string[20] = " (JA ESCOLHIDO)";
 		        printf("\n ---------------------------------------\n");
@@ -262,6 +170,98 @@ void interface(bool a, bool b, bool c, bool d)
 	            printf("| 0) Sair                               |\n");
 	    		printf(" ---------------------------------------\n");
 }
+void opcaoSort(Vetores v)
+{
+	int tempo, opcao=-1;
+	while (opcao != 0)
+	{
+		clock_t inicio, fim;
+		interface();
+		scanf("%d", &opcao);
+		char str[20] = "";
+
+		switch (opcao)
+		{
+		case 1:
+			if(a) {opcao = 500; goto LINE96532;}
+			inicio = clock();
+			bubbleSort(v.vetor1);
+			fim = clock();
+			mostrarTela(v.vetor1, 1);
+			strcpy(str, "Bubble Sort");
+			v.bubble = fim - inicio;
+			buscaBinaria(v.vetor1);
+			v = preencher(v);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.bubble);
+			a=true;
+			break;
+		case 2:
+			if(b) {opcao = 500; goto LINE96532;}
+			inicio = clock();
+			selectionSort(v.vetor2);
+			fim = clock();
+			mostrarTela(v.vetor2, 2);
+			strcpy(str, "Select Sort");
+			v.select = fim - inicio;
+			buscaBinaria(v.vetor2);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.select);
+			b=true;
+			break;
+		case 3:
+			if(c) {opcao = 500; goto LINE96532;}
+			inicio = clock();
+			insertSort(v.vetor3);
+			fim = clock();
+			mostrarTela(v.vetor3, 3);
+			strcpy(str, "Insert Sort");;
+			v.insert = fim - inicio;
+			buscaBinaria(v.vetor3);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.insert);
+			c=true;
+			break;
+		case 4:
+			if(d) {opcao = 500; goto LINE96532;}
+			inicio = clock();
+			quicksort(v.vetor4, 0, tam);
+			fim = clock();
+			mostrarTela(v.vetor4, 4);
+			strcpy(str, "Quick Sort");
+			v.quick = fim - inicio;
+			buscaBinaria(v.vetor4);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.quick);
+			d=true;
+			break;
+		case 5:
+			system("cls");
+			if(!a&&!b&&!c&&!d)
+			{
+
+			printf("\nNenhuma opcao ainda foi executada!\n");
+			}
+			if(a)
+			printf("Tempo de ordenacao por Bubble Sort: %d milisegundos\n\n", v.bubble);
+			if(b)
+			printf("Tempo de ordenacao por Select Sort: %d milisegundos\n\n", v.select);
+			if(c)
+			printf("Tempo de ordenacao por Insert Sort: %d milisegundos\n\n", v.insert);
+			if(d)
+			printf("Tempo de ordenacao por Quick Sort:  %d milisegundos\n\n", v.quick);
+			break;
+		case 0:
+			break;
+LINE96532:
+		case 500:
+			system("cls");
+			printf("Essa opcao ja foi executada! \n");
+			break;
+		default:
+			system("cls");
+			printf("Opcao Invalida! \n");
+			break;	
+		}
+	}
+}
+
 int main()
 {
 	printf("\n          Bem Vindo ao programa!\n");
