@@ -224,6 +224,8 @@ void opcaoSort(Vetores v)
 			if(opcao4)
 			printf("Tempo de ordenacao por Quick Sort:  %d milisegundos\n\n", v.quick);
 			break;
+		case 0:
+			break;
 LINE96532:
 		case 500:
 			system("cls");
