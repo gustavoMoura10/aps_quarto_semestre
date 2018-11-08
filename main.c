@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <stdbool.h>
+#include <stdlib.h>
 #define tam 10000
 int i, j;
 typedef struct
@@ -10,6 +12,11 @@ typedef struct
 	int vetor2[tam];
 	int vetor3[tam];
 	int vetor4[tam];
+	
+	int bubble;	
+	int select;
+	int insert;
+	int quick;
 } Vetores;
 
 Vetores preencher(Vetores v)
@@ -33,6 +40,7 @@ void mostrarTela(int *vetor, int numeroVetor)
 	}
 	printf("\n");
 	printf("VETOR %d \n", numeroVetor);
+	system("cls");
 }
 
 void buscaBinaria(int *vetor)
@@ -141,6 +149,7 @@ void quicksort(int *vetor, int began, int end)
 void opcaoSort(Vetores v)
 {
 	int tempo, opcao;
+	bool opcao1, opcao2, opcao3, opcao4;
 	while (opcao != 0)
 	{
 		clock_t inicio, fim;
@@ -150,54 +159,84 @@ void opcaoSort(Vetores v)
 		printf("2) SELECTIONSORT \n");
 		printf("3) INSERTIONSORT \n");
 		printf("4) QUICKSORT \n");
+	    printf("5) OBTER DADOS DE PERFORMANCE DAS OPCOES ESCOLHIDAS \n");
 		scanf("%d", &opcao);
 		char str[20] = "";
 
 		switch (opcao)
 		{
 		case 1:
+			if(opcao1) goto LINE96532;
 			inicio = clock();
 			bubbleSort(v.vetor1);
 			mostrarTela(v.vetor1, 1);
 			strcpy(str, "Bubble Sort");
 			fim = clock();
-			tempo = fim - inicio;
+			v.bubble = fim - inicio;
 			buscaBinaria(v.vetor1);
 			v = preencher(v);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.bubble);
+			opcao1=true;
 			break;
 		case 2:
+			if(opcao2) goto LINE96532;
 			inicio = clock();
 			selectionSort(v.vetor2);
 			mostrarTela(v.vetor2, 2);
 			strcpy(str, "Select Sort");
 			fim = clock();
-			tempo = fim - inicio;
+			v.select = fim - inicio;
 			buscaBinaria(v.vetor2);
 			v = preencher(v);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.select);
+			opcao2=true;
 			break;
 		case 3:
+			if(opcao3) goto LINE96532;
 			inicio = clock();
 			insertSort(v.vetor3);
 			mostrarTela(v.vetor3, 3);
 			strcpy(str, "Insert Sort");
 			fim = clock();
-			tempo = fim - inicio;
+			v.insert = fim - inicio;
 			buscaBinaria(v.vetor3);
 			v = preencher(v);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.insert);
+			opcao3=true;
 			break;
 		case 4:
+			if(opcao4) goto LINE96532;
 			inicio = clock();
 			quicksort(v.vetor4, 0, tam);
 			mostrarTela(v.vetor4, 4);
 			strcpy(str, "Quick Sort");
 			fim = clock();
-			tempo = fim - inicio;
+			v.quick = fim - inicio;
 			buscaBinaria(v.vetor4);
 			v = preencher(v);
-			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, tempo);
+			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.quick);
+			opcao4=true;
+			break;
+		case 5:
+			system("cls");
+			if(!opcao1&&!opcao2&&!opcao3&&!opcao4)
+			{
+
+			printf("\nNenhuma opcao ainda foi executada!\n");
+			}
+			if(opcao1)
+			printf("\nTempo de ordenacao por Bubble Sort: %d milisegundos\n", v.bubble);
+			if(opcao2)
+			printf("\nTempo de ordenacao por Select Sort: %d milisegundos\n", str, v.select);
+			if(opcao3)
+			printf("\nTempo de ordenacao por Insert Sort: %d milisegundos\n", str, v.insert);
+			if(opcao4)
+			printf("\nTempo de ordenacao por Quick Sort: %d milisegundos\n", str, v.quick);
+			break;
+LINE96532:
+		default:
+			system("cls");
+			printf("Essa opcao ja foi executada! \n");
 			break;
 		}
 	}
