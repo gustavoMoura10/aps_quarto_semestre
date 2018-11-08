@@ -163,9 +163,9 @@ void opcaoSort(Vetores v)
 			if(opcao1) {opcao = 500; goto LINE96532;}
 			inicio = clock();
 			bubbleSort(v.vetor1);
+			fim = clock();
 			mostrarTela(v.vetor1, 1);
 			strcpy(str, "Bubble Sort");
-			fim = clock();
 			v.bubble = fim - inicio;
 			buscaBinaria(v.vetor1);
 			v = preencher(v);
@@ -176,9 +176,9 @@ void opcaoSort(Vetores v)
 			if(opcao2) {opcao = 500; goto LINE96532;}
 			inicio = clock();
 			selectionSort(v.vetor2);
+			fim = clock();
 			mostrarTela(v.vetor2, 2);
 			strcpy(str, "Select Sort");
-			fim = clock();
 			v.select = fim - inicio;
 			buscaBinaria(v.vetor2);
 			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.select);
@@ -188,9 +188,9 @@ void opcaoSort(Vetores v)
 			if(opcao3) {opcao = 500; goto LINE96532;}
 			inicio = clock();
 			insertSort(v.vetor3);
-			mostrarTela(v.vetor3, 3);
-			strcpy(str, "Insert Sort");
 			fim = clock();
+			mostrarTela(v.vetor3, 3);
+			strcpy(str, "Insert Sort");;
 			v.insert = fim - inicio;
 			buscaBinaria(v.vetor3);
 			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.insert);
@@ -200,9 +200,9 @@ void opcaoSort(Vetores v)
 			if(opcao4) {opcao = 500; goto LINE96532;}
 			inicio = clock();
 			quicksort(v.vetor4, 0, tam);
+			fim = clock();
 			mostrarTela(v.vetor4, 4);
 			strcpy(str, "Quick Sort");
-			fim = clock();
 			v.quick = fim - inicio;
 			buscaBinaria(v.vetor4);
 			printf("\nTempo de ordenacao por %s: %d milisegundos\n", str, v.quick);
