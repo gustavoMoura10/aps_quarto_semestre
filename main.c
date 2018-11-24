@@ -7,6 +7,7 @@
 #define tam 20000
 //apontadores para os laços de repetição
 int i, j;
+bool a, b, c, d; //Verificadores para saber se a opção já foi escolhida
 typedef struct
 {
 	//Vetores para guardar valores aleatórios e logo então, serem sortedos
@@ -193,7 +194,7 @@ void interface(bool a, bool b, bool c, bool d)
 void opcaoSort(Vetores v)
 {
 	int opcao=-1; //Opção do SwitchCase. Está como -1 para não fechar o loop do laço de repetição
-	bool a, b, c, d; //Verificadores para saber se a opção já foi escolhida
+	
 	while (opcao != 0)
 	{
 		clock_t inicio, fim; //Pega o tick da máquina para verificar performance
